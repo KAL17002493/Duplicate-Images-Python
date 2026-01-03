@@ -1,5 +1,12 @@
+decorator==5.2.1
 ImageHash==4.3.2
+ImageIO==2.37.2
+imageio-ffmpeg==0.6.0
+moviepy==2.2.1
 numpy==2.3.3
 pillow==11.3.0
+proglog==0.1.12
+python-dotenv==1.2.1
 PyWavelets==1.9.0
 scipy==1.16.2
+tqdm==4.67.1

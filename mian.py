@@ -4,7 +4,7 @@ import shutil
 import tkinter as tk
 from tkinter import filedialog
 from datetime import datetime
-#from moviepy import VideoFileClip
+from moviepy import VideoFileClip
 
 def file_hash(path):
     hasher = hashlib.md5()
@@ -28,7 +28,7 @@ def write_to_file(total_files, total_image_duplicate_count, keep_folder_path, to
         f.write(f"Folder Scanned: {folder}\n")
         f.write(f"Files checked: {total_files}\n")
         f.write(f"Image files checked: {total_image_files}\n")
-        f.write(f"Relevent video files checked (>= 30s): {total_relevant_video_files}\n")
+        f.write(f"Relevent video files kept (>= 30s): {total_relevant_video_files}\n")
         f.write(f"Total IMAGE duplicates: {total_image_duplicate_count}\n")
         f.write(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
 
@@ -110,11 +110,11 @@ def remove_duplicates(folder, img_extensions=None, delete=False, vid_extensions=
 
                 #continue   #UNCOMMENT THIS IF VIDEOS SHOULD BE DELETED IF THEY ARE UNDER 30 SEC
 
-                # Delete video if it's less than 30 seconds
-                # with VideoFileClip(filepath) as clip:
-                #     if clip.duration <= 30:
-                #         os.remove(filepath)
-                #         continue
+                #Delete video if it's less than 30 seconds
+                with VideoFileClip(filepath) as clip:
+                    if clip.duration <= 30:
+                        os.remove(filepath)
+                        continue
 
                 total_relevant_video_files += 1
 
